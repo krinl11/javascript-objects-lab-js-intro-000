@@ -1,13 +1,21 @@
 const recipes = new Object({});
 
-// const testobject = { prop: 1 }
-function updateObjectWithKeyAndValue(testobject, value, key) {
-  var newObject = Object.assign({}, testobject, 'prop2': 2);
-  newObject[key]=value;
+function updateObjectWithKeyAndValue(object, key, value) {
+  return Object.assign({foo: 'bar'}, object, {[key]: value});
+};
+
+function destructivelyUpdateObjectWithKeyAndValue(object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+function deleteFromObjectByKey(object, key) {
+  const newObject = Object.assign({}, object)
+  delete newObject[key]
   return newObject
 };
 
-function destructivelyUpdateObjectWithKeyAndValue(testobject, value, key) {
-  testobject[value]=key
-  return testobject
+function destructivelyDeleteFromObjectByKey(object, key) {
+  delete object[key]
+  return object
 };
